@@ -67,6 +67,21 @@ class Node{
         return head;
     }
 
+    Node* insertBeforEle(Node* head, int val, int ele){
+        if(head == NULL) return head;
+        if(head->data == ele) return new Node(val, head);
+        Node* trav = head;
+        while(trav->next != NULL){
+            if(trav->next->data == ele){
+                Node* temp = new Node(val, trav->next);
+                trav->next = temp;
+                break;
+            }
+            trav = trav->next;
+        }
+        return head;
+    }
+
 
 };
 int main(){
@@ -78,6 +93,7 @@ int main(){
     head->trav(head);
     // head = head->insertAtHead(head, 7);
     // head = head->insertAtTail(head, 18);
-    head = head->insertAtIndex(head, 1, 3);
+    // head = head->insertAtIndex(head, 1, 3);
+    head = head->insertBeforEle(head, 7, 9);
     head->trav(head);
 }
